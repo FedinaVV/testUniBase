@@ -1,0 +1,404 @@
+@import "reset.css";
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    background-color: #66bdbb;
+}
+
+.btnOpen-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.btnOpen {
+    position: relative;
+    margin: 150px;
+    color: #fff;
+    padding: 20px 0;
+    width: 300px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: rgb(229, 92, 147);
+}
+
+.btnOpen span {
+    position: relative;
+    z-index: 5;
+}
+
+.btnOpen:before, .btnOpen:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.btnOpen:before {
+    transform: translateX(-100%);
+    background: #fff;
+    transition: transform .3s cubic-bezier(.55, .055, .675, .19);
+}
+
+.btnOpen:after {
+    background: rgba(229, 38, 110, 1);
+    transform: translateX(100%);
+    transition: transform .3s cubic-bezier(.16, .73, .58, .62) .3s;
+}
+
+.btnOpen:hover:before, .btnOpen:hover:after {
+    transform: translateX(0);
+}
+
+.modal {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    top: -1000px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: scroll;
+}
+
+.modal_active {
+    position: fixed;
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: .3s;
+}
+
+.modal__content {
+    width: 100%;
+    max-width: 554px;
+    padding: 50px 100px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    position: relative;
+    margin-top: 100px;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.modal__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+    color: rgba(12, 16, 20, 1);
+    margin-bottom: 35px;
+}
+
+.form__required {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.form__name, .form__phone, .form__email, .form__direction, .form__leader {
+    position: relative;
+}
+
+.form__input {
+    margin-bottom: 32px;
+}
+
+.form__label {
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    display: block;
+    font-size: 12px;
+    line-height: 1.34;
+    color: rgba(106, 110, 114, 1);
+}
+
+.form__input {
+    display: block;
+    width: 330px;
+    height: 40px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(12, 16, 20, 1);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(214, 218, 222, 1);
+    border-radius: 5px;
+}
+
+.form__icon {
+    color: rgba(217, 0, 0, 1);
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.form__download {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.form__download-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(106, 110, 114, 1);
+    margin-bottom: 75px;
+    margin-left: 35px;
+}
+
+.form__download-input {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.form__label-download {
+    position: relative;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 65px;
+    z-index: 2;
+}
+
+.form__label-download div {
+    width: 80px;
+    margin-left: 95px;
+}
+
+.form__label-download img {
+    height: 30px;
+    width: 30px;
+    background-color: black;
+    cursor: pointer;
+}
+
+.form__download-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    cursor: pointer;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.form__download-close img {
+    vertical-align: middle;
+}
+
+.form__select {
+    width: 557px;
+    height: 56px;
+    padding: 8px 16px;
+    border: 1px solid rgba(214, 218, 222, 1);
+    font-size: 16px;
+    color: rgba(12, 16, 20, 1);
+    border-radius: 5px;
+    margin-bottom: 32px;
+}
+
+.form__input-link {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.form__input-link input {
+    display: block;
+    width: 526px;
+    height: 40px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(12, 16, 20, 1);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(214, 218, 222, 1);
+    border-radius: 5px;
+}
+
+.form__input-link img {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+.form__leader-input {
+    width: 526px;
+}
+
+.form__image-download {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    z-index: 1;
+    border-radius: 50%;
+    max-width: 175px;
+    background: #000000;
+}
+
+.image-download {
+    max-width: 175px;
+    display: none;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.form__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__btnSend {
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.125;
+    color: rgba(255, 255, 255, 1);
+    padding: 16px;
+    text-align: center;
+    width: 100%;
+    max-width: 557px;
+    background-color: rgba(229, 38, 110, 1);
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.form__btnClose {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(8, 72, 192, 1);
+    background-color: #fff;
+}
+
+
+/*------------media------------*/
+
+@media (max-width: 768px) {
+    .modal__content {
+        padding: 50px 25px;
+    }
+}
+
+@media (max-width: 658px) {
+    .form__input {
+        width: 526px;
+    }
+
+    .form__required {
+        flex-direction: column;
+        margin-bottom: 80px;
+    }
+
+    .form__download{
+        text-align: left;
+    }
+
+    .form__download-title{
+        margin-left: 0;
+        margin-bottom: 32px;
+    }
+
+    .form__label-download div {
+        margin-left: 0;
+    }
+
+    .form__label-download {
+        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form__label-download svg{
+        width: 65px;
+        height: 65px;
+    }
+
+    .form__download-close {
+        right: 190px;
+    }
+
+    .form__image-download {
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+}
+
+@media (max-width: 608px) {
+    .modal__content {
+        max-width: 400px;
+    }
+
+    .form__input, .form__input-link input{
+        width: 300px;
+    }
+
+    .form__select {
+        width: 332px;
+    }
+
+    .form__input-link img {
+        right: 85px;
+    }
+
+    .form__download-close {
+        right: 115px;
+    }
+}
+
+@media (max-width: 460px) {
+    .btnOpen {
+        margin: 100px;
+    }
+    .modal__title {
+    font-size: 20px;
+}
+    .modal__content {
+        max-width: 278px;
+    }
+
+    .form__input, .form__input-link input{
+        width: 247px;
+    }
+    .form__select {
+        width: 279px;
+    }
+
+    .form__input-link img {
+        right: 18px;
+    }
+    .form__download-close {
+        right: 55px;
+    }
+}
+
+@media (max-width: 460px) {
+    .modal__content {
+        padding: 50px 10px;
+    }
+}
