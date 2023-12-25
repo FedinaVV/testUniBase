@@ -5,16 +5,41 @@ const thId = document.getElementById('thId');
 const thTitle = document.getElementById('thTitle');
 const thBody = document.getElementById('thBody');
 const filter = document.getElementById('filter');
-
-let posts = [];
-let isSortUserIdAscending = false;
-let isSortIdAscending = false;
-let isSortTitleFromAToZ = true;
-let isSortBodyFromAToZ = true;
-
-let request = new Request(url, {
+const request = new Request(url, {
     method: 'GET'
 });
+
+/**
+ * Все посты, загруженные с сервера
+ */
+let allPosts = [];
+
+/**
+ * Посты, отфильтрованные по подстроке
+ */
+let filteredPosts = [];
+
+/**
+ * Флаг сортировки по UserId
+ */
+let isSortUserIdAscending = false;
+
+/**
+ * Флаг сортировки по Id
+ */
+let isSortIdAscending = false;
+
+/**
+ * Флаг сортировки по Title
+ */
+let isSortTitleFromAToZ = true;
+
+/**
+ * Флаг сортировки по Body
+ */
+let isSortBodyFromAToZ = true;
+
+
 
 /**
  * Создание таблицы
@@ -50,8 +75,9 @@ function getData() {
         .then(response => {
             const promise = response.json();
             promise.then(data => {
-                posts = data;
-                createTableBody(posts);
+                allPosts = data;
+                filteredPosts = data;
+                createTableBody(allPosts);
             })
         })
 }
@@ -63,9 +89,9 @@ thUserId.addEventListener('click', function sortUserId() {
     let sortedPosts = [];
 
     if (isSortUserIdAscending) {
-        sortedPosts = posts.sort((a, b) => (a.userId - b.userId));
+        sortedPosts = filteredPosts.sort((a, b) => (a.userId - b.userId));
     } else {
-        sortedPosts = posts.sort((a, b) => (b.userId - a.userId));
+        sortedPosts = filteredPosts.sort((a, b) => (b.userId - a.userId));
     }
 
     isSortUserIdAscending = !isSortUserIdAscending;
@@ -79,9 +105,9 @@ thId.addEventListener('click', function sortId() {
     let sortedPosts = [];
 
     if (isSortIdAscending) {
-        sortedPosts = posts.sort((a, b) => (a.id - b.id));
+        sortedPosts = filteredPosts.sort((a, b) => (a.id - b.id));
     } else {
-        sortedPosts = posts.sort((a, b) => (b.id - a.id));
+        sortedPosts = filteredPosts.sort((a, b) => (b.id - a.id));
     }
 
     isSortIdAscending = !isSortIdAscending;
@@ -95,7 +121,7 @@ thTitle.addEventListener('click', function sortTitle() {
     let sortedPosts = [];
 
     if (isSortTitleFromAToZ) {
-        sortedPosts = posts.sort((a, b) => {
+        sortedPosts = filteredPosts.sort((a, b) => {
             if (a.title.toLowerCase() < b.title.toLowerCase()) {
                 return -1;
             }
@@ -105,7 +131,7 @@ thTitle.addEventListener('click', function sortTitle() {
             return 0;
         });
     } else {
-        sortedPosts = posts.sort((a, b) => {
+        sortedPosts = filteredPosts.sort((a, b) => {
             if (a.title.toLowerCase() > b.title.toLowerCase()) {
                 return -1;
             }
@@ -127,7 +153,7 @@ thBody.addEventListener('click', function sortBody() {
     let sortedPosts = [];
 
     if (isSortBodyFromAToZ) {
-        sortedPosts = posts.sort((a, b) => {
+        sortedPosts = filteredPosts.sort((a, b) => {
             if (a.body.toLowerCase() < b.body.toLowerCase()) {
                 return -1;
             }
@@ -137,7 +163,7 @@ thBody.addEventListener('click', function sortBody() {
             return 0;
         });
     } else {
-        sortedPosts = posts.sort((a, b) => {
+        sortedPosts = filteredPosts.sort((a, b) => {
             if (a.body.toLowerCase() > b.body.toLowerCase()) {
                 return -1;
             }
@@ -152,27 +178,27 @@ thBody.addEventListener('click', function sortBody() {
     createTableBody(sortedPosts);
 });
 
+/**
+ * Фильтр постов по введённому в инпут filter значению
+ */
 filter.addEventListener('input', function filterPosts() {
     if (filter.value.length > 2) {
-        console.log('dkjfisdjfks')
-        let filteredPosts = posts.filter(post => {
+        let postsAfterFiltering = allPosts.filter(post => {
             return post.title.includes(filter.value) || post.body.includes(filter.value);
-        })
-        createTableBody(filteredPosts);
+        });
+        filteredPosts = postsAfterFiltering;
+        createTableBody(postsAfterFiltering);
     }
     if (filter.value.length === 0) {
-        createTableBody(posts);
+        filteredPosts = allPosts;
+        createTableBody(filteredPosts);
     }
 })
 
 function clearFilter() {
     filter.value = "";
-    createTableBody(posts);
+    filteredPosts = allPosts;
+    createTableBody(filteredPosts);
 }
 
 getData();
-
-
-
-
-
