@@ -118,7 +118,6 @@ body {
 
 .form__label {
     position: absolute;
-    top: 5px;
     left: 16px;
     display: block;
     font-size: 12px;
@@ -225,9 +224,9 @@ body {
 
 .form__input-link input {
     display: block;
-    width: 526px;
+    width: 502px;
     height: 40px;
-    padding: 8px 16px;
+    padding: 8px 40px 8px 16px;
     font-family: inherit;
     font-size: 16px;
     line-height: 1.5;
@@ -241,7 +240,7 @@ body {
 .form__input-link img {
     position: absolute;
     top: 18px;
-    right: 18px;
+    right: 8px;
 }
 
 .form__leader-input {
@@ -254,15 +253,14 @@ body {
     left: 40px;
     z-index: 1;
     border-radius: 50%;
-    max-width: 175px;
-    background: #000000;
+    max-width: 150px;
 }
 
 .image-download {
-    max-width: 175px;
+    max-width: 150px;
+    max-height: 200px;
     display: none;
     border-radius: 50%;
-    opacity: 0.6;
 }
 
 .form__buttons {
@@ -354,8 +352,8 @@ body {
         max-width: 400px;
     }
 
-    .form__input, .form__input-link input{
-        width: 300px;
+    .form__input, .form__input-link input {
+        width: 278px;
     }
 
     .form__select {
@@ -363,7 +361,7 @@ body {
     }
 
     .form__input-link img {
-        right: 85px;
+        right: 80px;
     }
 
     .form__download-close {
@@ -376,21 +374,21 @@ body {
         margin: 100px;
     }
     .modal__title {
-    font-size: 20px;
-}
+        font-size: 20px;
+    }
     .modal__content {
         max-width: 278px;
     }
 
     .form__input, .form__input-link input{
-        width: 247px;
+        width: 223px;
     }
     .form__select {
         width: 279px;
     }
 
     .form__input-link img {
-        right: 18px;
+        right: 11px;
     }
     .form__download-close {
         right: 55px;

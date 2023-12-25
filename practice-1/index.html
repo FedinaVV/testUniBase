@@ -34,7 +34,7 @@
                         <label class="form__phone-label form__label" for="phone"><span
                                 class="form__icon">&#10033;</span>
                             Телефон</label>
-                        <input class="form__phone-input form__input" type="tel" name="phone" id="phone" required pattern="^[0-9]+$">
+                        <input class="form__phone-input form__input" type="tel" name="phone" id="phone" required>
                     </div>
                     <div class="form__email">
                         <label class="form__email-label form__label" for="email"><span
@@ -70,7 +70,7 @@
                     <div class="form__image-download">
                         <img src="" class="image-download" id="image-download" alt="">
                     </div>
-                    <div class="form__download-close" id="download-close" onclick="clearFile()">
+                    <div class="form__download-close" id="download-close" onclick="clearFileInput()">
                         <img src="./img/cross.svg" alt="">
                     </div>
                 </div>
@@ -124,6 +124,7 @@
 </div>
 
 
-<script src="./script.js"></script>
+<script src="./scripts/script.js"></script>
+<script src="./scripts/phone-mask.js"></script>
 </body>
 </html>
